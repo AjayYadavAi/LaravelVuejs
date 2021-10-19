@@ -12,9 +12,9 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return response()->json(Todo::whereUserId($request->user()->id)->get());
+        return response()->json(Todo::get());
     }
 
     /**
@@ -35,10 +35,7 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $data['user_id'] = $request->user()->id;
-        $data['name'] = $request->name;
-
-        $todo = Todo::create($data);
+        $todo = Todo::create($request->all());
 
         return response()->json($todo);
     }
@@ -74,7 +71,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        $todo->update(['name'=>$request->name ]);
+        $todo->update($request->all());
         return response()->json($todo);
     }
 
