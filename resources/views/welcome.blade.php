@@ -15,13 +15,12 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background: #cdcdcd;
             }
         </style>
     </head>
     <body class="antialiased">
         <div id="app">
-            <App />
+            <todo />
         </div>
 
 
